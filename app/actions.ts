@@ -3,7 +3,6 @@
 import { cookies } from "next/headers";
 import { z } from "zod";
 import { resolveLanguage, t as translate, type Language } from "@/lib/i18n/config";
-import nodemailer from "nodemailer";
 
 export type ContactFormState = {
   status: "idle" | "success" | "error";
@@ -30,46 +29,54 @@ type ContactPayload = {
 
 async function sendContactNotification({ name, email, message, lang }: ContactPayload) {
   const {
-    SMTP_HOST,
-    SMTP_PORT,
-    SMTP_USER,
-    SMTP_PASS,
     CONTACT_RECIPIENT = "alpercivaci5@gmail.com",
-    CONTACT_FROM,
+    FORMSUBMIT_ENDPOINT = "https://formsubmit.co/ajax",
+    FORMSUBMIT_REFERER,
   } = process.env;
 
-  if (!SMTP_HOST || !SMTP_PORT || !SMTP_USER || !SMTP_PASS) {
-    console.error("Contact submission failed: missing SMTP configuration environment variables.");
+  const normalizedEndpoint = FORMSUBMIT_ENDPOINT.replace(/\/$/, "");
+
+  if (!CONTACT_RECIPIENT) {
+    console.error("Contact submission failed: missing Formsubmit recipient email.");
     throw new Error("missing-email-config");
   }
 
-  const transporter = nodemailer.createTransport({
-    host: SMTP_HOST,
-    port: Number(SMTP_PORT),
-    secure: Number(SMTP_PORT) === 465,
-    auth: {
-      user: SMTP_USER,
-      pass: SMTP_PASS,
-    },
-  });
-
   const subject = `${translate(lang, "contact.page.eyebrow")} | ${name}`;
-  const plainBody = `Yeni bir iletişim başvurusu alındı.\n\nAd: ${name}\nE-posta: ${email}\n\nMesaj:\n${message}`;
-  const htmlBody = `
-    <p><strong>Ad:</strong> ${name}</p>
-    <p><strong>E-posta:</strong> <a href="mailto:${email}">${email}</a></p>
-    <p><strong>Mesaj:</strong></p>
-    <p style="white-space: pre-line;">${message}</p>
-  `;
 
-  await transporter.sendMail({
-    from: CONTACT_FROM ?? `"AC Software" <${SMTP_USER}>`,
-    to: CONTACT_RECIPIENT,
-    replyTo: email,
-    subject,
-    text: plainBody,
-    html: htmlBody,
-  });
+  const response = await fetch(
+    `${normalizedEndpoint}/${encodeURIComponent(CONTACT_RECIPIENT)}`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        ...(FORMSUBMIT_REFERER ? { Referer: FORMSUBMIT_REFERER } : {}),
+      },
+      body: JSON.stringify({
+        name,
+        email,
+        message,
+        _subject: subject,
+        reply_to: email,
+        _template: "table",
+      }),
+    },
+  );
+
+  let responseBody: unknown = null;
+  const rawBody = await response.text();
+  try {
+    responseBody = rawBody ? JSON.parse(rawBody) : null;
+  } catch (parseError) {
+    responseBody = rawBody;
+  }
+
+  if (!response.ok) {
+    console.error("Formsubmit API error", response.status, responseBody);
+    throw new Error("email-delivery-failed");
+  }
+
+  console.info("Formsubmit API success", responseBody);
 }
 
 export async function submitContactForm(
@@ -89,9 +96,7 @@ export async function submitContactForm(
   try {
     const data = contactSchema.parse(raw);
 
-    await new Promise((resolve) => setTimeout(resolve, 750));
     console.info("📨 Contact submission", data);
-
     await sendContactNotification({ ...data, lang });
 
     return {
