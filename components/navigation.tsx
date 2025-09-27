@@ -58,7 +58,10 @@ export function SiteNavigation() {
       <div className="flex w-full max-w-6xl items-center justify-between rounded-full border border-white/10 bg-black/40 px-5 py-3 backdrop-blur-xl">
         <Link
           href="/"
-          className="group flex items-center gap-3 text-xs font-medium uppercase tracking-[0.3em] text-white/60"
+          className={cn(
+            "group flex items-center gap-3 text-xs font-medium uppercase tracking-[0.3em] text-white/60",
+            mobileOpen && "invisible",
+          )}
         >
           <span className="relative flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-white/5">
             <span className="absolute inset-0 rounded-full bg-gradient-to-br from-white/30 to-white/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -167,7 +170,12 @@ export function SiteNavigation() {
         </div>
 
         <Dialog.Root open={mobileOpen} onOpenChange={setMobileOpen}>
-          <Dialog.Trigger className="inline-flex items-center justify-center rounded-full border border-white/15 p-2 text-white transition hover:border-white/30 hover:bg-white/10 md:hidden">
+          <Dialog.Trigger
+            className={cn(
+              "inline-flex items-center justify-center rounded-full border border-white/15 p-2 text-white transition hover:border-white/30 hover:bg-white/10 md:hidden",
+              mobileOpen && "invisible",
+            )}
+          >
             <Menu className="h-5 w-5" />
             <span className="sr-only">{t("nav.open")}</span>
           </Dialog.Trigger>
