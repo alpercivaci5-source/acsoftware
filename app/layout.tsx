@@ -9,6 +9,8 @@ import { cn } from "@/lib/utils";
 import { I18nProvider } from "@/lib/i18n/client";
 import { resolveLanguage } from "@/lib/i18n/config";
 
+export const runtime = "edge";
+
 const heading = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-heading",

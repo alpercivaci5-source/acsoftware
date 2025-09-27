@@ -67,7 +67,7 @@ async function sendContactNotification({ name, email, message, lang }: ContactPa
   const rawBody = await response.text();
   try {
     responseBody = rawBody ? JSON.parse(rawBody) : null;
-  } catch (parseError) {
+  } catch {
     responseBody = rawBody;
   }
 
