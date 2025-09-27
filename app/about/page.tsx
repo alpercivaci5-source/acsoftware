@@ -4,6 +4,8 @@ import { AboutSection } from "@/components/sections/about";
 import { ServicesSection } from "@/components/sections/services";
 import { getI18n } from "@/lib/i18n/server";
 
+export const runtime = "edge";
+
 export async function generateMetadata(): Promise<Metadata> {
   const { t } = await getI18n();
 
