@@ -1,0 +1,32 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#070B1A" />
+      <stop offset="50%" stop-color="#0F1530" />
+      <stop offset="100%" stop-color="#020409" />
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(600 180) rotate(90) scale(320 520)">
+      <stop stop-color="#5F6FFF" stop-opacity="0.8" />
+      <stop offset="1" stop-color="#5F6FFF" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="glow2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(320 420) rotate(90) scale(260 360)">
+      <stop stop-color="#2EE7C6" stop-opacity="0.6" />
+      <stop offset="1" stop-color="#2EE7C6" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="400" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5F6FFF" />
+      <stop offset="1" stop-color="#2EE7C6" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <ellipse cx="600" cy="220" rx="520" ry="320" fill="url(#glow)" />
+  <ellipse cx="320" cy="420" rx="360" ry="260" fill="url(#glow2)" />
+  <g filter="url(#shadow)">
+    <rect x="120" y="170" width="960" height="290" rx="32" fill="rgba(16, 22, 45, 0.65)" stroke="rgba(255,255,255,0.08)" style="backdrop-filter: blur(50px);" />
+  </g>
+  <text x="160" y="280" fill="#8EA2FF" font-family="'Space Grotesk', 'Helvetica Neue', Arial" font-size="28" letter-spacing="0.6em" textLength="480">AC SOFTWARE</text>
+  <text x="160" y="360" fill="#FFFFFF" font-family="'Space Grotesk', 'Helvetica Neue', Arial" font-size="60" font-weight="600">Future of Digital Solutions</text>
+  <text x="160" y="418" fill="rgba(255,255,255,0.72)" font-family="'Inter', 'Helvetica Neue', Arial" font-size="22" letter-spacing="0.03em">Premium digital products, AI platforms, and cloud experiences that scale with ambition.</text>
+  <rect x="160" y="450" width="240" height="56" rx="28" fill="url(#accent)" />
+  <text x="200" y="487" fill="#040509" font-family="'Inter', 'Helvetica Neue', Arial" font-size="20" font-weight="600">acsoftware.com</text>
+</svg>
