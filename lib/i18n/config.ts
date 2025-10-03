@@ -196,8 +196,8 @@ export const translations: Record<Language, Record<string, string>> = {
     "footer.description": "We design, build, and evolve resilient platforms that move faster than change.",
     "footer.copy": "All rights reserved.",
     "common.close": "Close",
-    "ceo.banner.title": "Led by Alper Civacı",
-    "ceo.banner.subtitle": "Our CEO orchestrates every engagement to deliver measurable impact with premium digital craftsmanship.",
+    "ceo.banner.title": "Guided by visionary leadership",
+    "ceo.banner.subtitle": "Our leadership team orchestrates every engagement to deliver measurable impact with premium digital craftsmanship.",
     "ceo.banner.cta": "Discover our leadership",
   },
   tr: {
@@ -394,8 +394,8 @@ export const translations: Record<Language, Record<string, string>> = {
     "footer.description": "Değişimden hızlı hareket eden dayanıklı platformlar tasarlar, geliştirir ve büyütürüz.",
     "footer.copy": "Tüm hakları saklıdır.",
     "common.close": "Kapat",
-    "ceo.banner.title": "Alper Civacı liderliğinde",
-    "ceo.banner.subtitle": "CEO’muz, her iş ortaklığını ölçülebilir etki ve premium dijital işçilikle yönetiyor.",
+    "ceo.banner.title": "Vizyoner liderlikle",
+    "ceo.banner.subtitle": "Liderlik ekibimiz, her iş ortaklığını ölçülebilir etki ve premium dijital işçilikle yönetiyor.",
     "ceo.banner.cta": "Liderliğimizi keşfedin",
   },
 };
