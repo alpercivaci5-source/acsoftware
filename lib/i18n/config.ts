@@ -1,4 +1,4 @@
-﻿export const languages = ["en", "tr"] as const;
+export const languages = ["en", "tr"] as const;
 export type Language = (typeof languages)[number];
 
 export const defaultLang: Language = "tr";
@@ -205,6 +205,15 @@ export const translations: Record<Language, Record<string, string>> = {
     "ceo.banner.expand.approach.desc": "Fast and transparent development process with continuous client feedback",
     "ceo.banner.expand.commitment": "Long-Term Partnership",
     "ceo.banner.expand.commitment.desc": "Continuous support and scalable systems for your growing business",
+    "notfound.title": "Page not found",
+    "notfound.description": "The page you are looking for might have been moved or no longer exists. Please return to the homepage or choose a different page from the menu.",
+    "metadata.site.title": "Patientia — The Future of Digital Solutions",
+    "metadata.site.description": "Patientia is a professional software development company that leads digital transformation with custom web applications, mobile solutions, AI integrations, and cloud infrastructure.",
+    "nav.skipToContent": "Skip to main content",
+    "loading": "Loading...",
+    "error.generic": "An error occurred. Please try again.",
+    "backToTop": "Back to top",
+    "backToTop.label": "Scroll back to top",
   },
   tr: {
     "nav.services": "Hizmetler",
@@ -369,9 +378,9 @@ export const translations: Record<Language, Record<string, string>> = {
     "portfolio.page.highlights.engagements.detail": "Strateji ortaklıkları, ürün dönüşümü, yetkinlik geliştirme",
     "portfolio.metadata.title": "Portföy",
     "portfolio.metadata.description": "Patientia'nın premium dijital ürün portföyünü keşfedin — ticari platformlardan zeki kurumsal uygulamalara.",
-    "contact.eyebrow": "Get in Touch",
-    "contact.title": "Let's Bring Your Project to Life",
-    "contact.description": "Share your needs with us, and let our expert team deliver the most suitable software solution for your project.",
+    "contact.eyebrow": "İletişime Geçin",
+    "contact.title": "Projenizi Hayata Geçirelim",
+    "contact.description": "İhtiyaçlarınızı bizimle paylaşın, uzman ekibimiz projeniz için en uygun yazılım çözümünü sunalım.",
     "contact.commitment.title": "Taahhüdümüz",
     "contact.commitment.p1": "Her ortaklık derin bir keşifle başlar.",
     "contact.commitment.p2": "Çalışmalarımızı teslimat listelerine değil, sonuçlara göre kurgularız.",
@@ -409,6 +418,15 @@ export const translations: Record<Language, Record<string, string>> = {
     "ceo.banner.expand.approach.desc": "Müşteri geri bildirimleri ile hızlı ve şeffaf geliştirme süreçleri",
     "ceo.banner.expand.commitment": "Uzun Vadeli Ortaklık",
     "ceo.banner.expand.commitment.desc": "Büyüyen işletmeniz için sürekli destek ve ölçeklenebilir sistemler",
+    "notfound.title": "Sayfa bulunamadı",
+    "notfound.description": "Aradığınız sayfa taşınmış veya artık mevcut olmayabilir. Lütfen ana sayfaya dönerek devam edin ya da menüden farklı bir sayfa seçin.",
+    "metadata.site.title": "Patientia — Dijital Çözümlerin Geleceği",
+    "metadata.site.description": "Patientia, özel web uygulamaları, mobil çözümler, yapay zeka entegrasyonları ve bulut altyapısı ile dijital dönüşüme öncülük eden profesyonel bir yazılım geliştirme şirketidir.",
+    "nav.skipToContent": "Ana içeriğe atla",
+    "loading": "Yükleniyor...",
+    "error.generic": "Bir hata oluştu. Lütfen tekrar deneyin.",
+    "backToTop": "Başa dön",
+    "backToTop.label": "Sayfanın başına geri dön",
   },
 };
 

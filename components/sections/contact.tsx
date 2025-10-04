@@ -1,11 +1,13 @@
 "use client";
 
-import { useActionState, type ComponentPropsWithoutRef } from "react";
+import { useActionState, useEffect, type ComponentPropsWithoutRef } from "react";
 import { motion } from "framer-motion";
 import * as Label from "@radix-ui/react-label";
 import * as Separator from "@radix-ui/react-separator";
+import { Loader2, Send } from "lucide-react";
 import { SectionHeader } from "@/components/ui/section-header";
 import { submitContactForm, type ContactFormState } from "@/app/actions";
+import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/utils";
 import { useI18n } from "@/lib/i18n/client";
 
@@ -17,6 +19,15 @@ const initialState: ContactFormState = {
 export function ContactSection() {
   const [state, formAction, pending] = useActionState(submitContactForm, initialState);
   const { t } = useI18n();
+  const { showToast } = useToast();
+
+  useEffect(() => {
+    if (state.status === "success") {
+      showToast(state.message, "success");
+    } else if (state.status === "error" && state.message) {
+      showToast(state.message, "error");
+    }
+  }, [state, showToast]);
 
   return (
     <section id="contact" className="px-6 py-24 sm:py-32">
@@ -85,22 +96,22 @@ export function ContactSection() {
               />
             </div>
             <div className="space-y-3">
-              {state.message ? (
-                <p
-                  className={cn(
-                    "text-sm",
-                    state.status === "success" ? "text-emerald-400" : "text-red-400",
-                  )}
-                >
-                  {state.message}
-                </p>
-              ) : null}
               <button
                 type="submit"
                 disabled={pending}
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-black transition hover:bg-white/90 disabled:cursor-not-allowed disabled:opacity-60"
               >
-                {pending ? t("contact.form.sending") : t("contact.form.submit")}
+                {pending ? (
+                  <>
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                    {t("contact.form.sending")}
+                  </>
+                ) : (
+                  <>
+                    <Send className="h-4 w-4" />
+                    {t("contact.form.submit")}
+                  </>
+                )}
               </button>
             </div>
           </motion.form>

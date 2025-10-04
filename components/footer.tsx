@@ -2,6 +2,7 @@
 
 import { Linkedin, Github, Instagram, Mail } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { useI18n } from "@/lib/i18n/client";
 
 const socials = [
@@ -20,7 +21,7 @@ export function SiteFooter() {
         <div className="space-y-3">
           <div className="flex items-center gap-3">
             <span className="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-white/10 to-white/5">
-              <img src="/patientia-logo.png" alt="Patientia" className="h-8 w-8 object-contain" />
+              <Image src="/patientia-logo.png" alt="Patientia" width={32} height={32} className="h-8 w-8 object-contain" />
             </span>
             <p className="text-sm font-medium uppercase tracking-[0.3em] text-white/60">Patientia</p>
           </div>

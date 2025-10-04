@@ -4,6 +4,7 @@ import { useState } from "react";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import * as Dialog from "@radix-ui/react-dialog";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { ChevronDown, Menu, X } from "lucide-react";
@@ -64,10 +65,13 @@ export function SiteNavigation() {
           )}
         >
           <span className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-white/10 to-white/5 transition-transform duration-300 group-hover:scale-105">
-            <img 
+            <Image 
               src="/patientia-logo.png" 
               alt="Patientia" 
+              width={36}
+              height={36}
               className="h-9 w-9 object-contain"
+              priority
             />
           </span>
           <motion.span 
@@ -204,7 +208,7 @@ export function SiteNavigation() {
                   className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-white/60"
                 >
                   <span className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-white/10 to-white/5">
-                    <img src="/patientia-logo.png" alt="Patientia" className="h-7 w-7 object-contain" />
+                    <Image src="/patientia-logo.png" alt="Patientia" width={28} height={28} className="h-7 w-7 object-contain" />
                   </span>
                   Patientia
                 </Link>
