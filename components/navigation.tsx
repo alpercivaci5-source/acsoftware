@@ -63,11 +63,26 @@ export function SiteNavigation() {
             mobileOpen && "invisible",
           )}
         >
-          <span className="relative flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-white/5">
-            <span className="absolute inset-0 rounded-full bg-gradient-to-br from-white/30 to-white/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-            <span className="text-lg font-semibold text-white">AC</span>
+          <span className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-white/10 to-white/5 transition-transform duration-300 group-hover:scale-105">
+            <img 
+              src="/patientia-logo.png" 
+              alt="Patientia" 
+              className="h-9 w-9 object-contain"
+            />
           </span>
-          <span className="text-white">Software</span>
+          <motion.span 
+            className="relative inline-block whitespace-nowrap text-white font-medium"
+            whileHover={{ 
+              color: "#D4AF37",
+              scale: 1.05,
+            }}
+            transition={{ 
+              duration: 0.3,
+              ease: "easeOut"
+            }}
+          >
+            Patientia
+          </motion.span>
         </Link>
 
         <NavigationMenu.Root className="relative hidden items-center md:flex">
@@ -186,9 +201,12 @@ export function SiteNavigation() {
                 <Link
                   href="/"
                   onClick={() => setMobileOpen(false)}
-                  className="text-xs font-semibold uppercase tracking-[0.3em] text-white/60"
+                  className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-white/60"
                 >
-                  AC Software
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-white/10 to-white/5">
+                    <img src="/patientia-logo.png" alt="Patientia" className="h-7 w-7 object-contain" />
+                  </span>
+                  Patientia
                 </Link>
                 <Dialog.Close className="rounded-full border border-white/15 p-2 text-white transition hover:border-white/30 hover:bg-white/10">
                   <X className="h-5 w-5" />

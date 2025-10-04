@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Patientia
 
-## Getting Started
+**Dijital Çözümlerin Geleceği**
 
-First, run the development server:
+Patientia, vizyoner kurumlar için premium dijital ürünler, kurumsal platformlar ve zeki deneyimler tasarlayan bir teknoloji stüdyosudur.
+
+## 🚀 Başlangıç
+
+Geliştirme sunucusunu başlatmak için:
 
 ```bash
 npm run dev
-# or
+# veya
 yarn dev
-# or
+# veya
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Tarayıcınızda [http://localhost:3000](http://localhost:3000) adresini açın.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠️ Teknolojiler
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Next.js 15** - React framework
+- **TypeScript** - Tip güvenliği
+- **Tailwind CSS** - Styling
+- **Framer Motion** - Animasyonlar
+- **Radix UI** - Accessible components
 
-## Learn More
+## 📁 Proje Yapısı
 
-To learn more about Next.js, take a look at the following resources:
+```
+patientia/
+├── app/              # Next.js app directory
+├── components/       # React bileşenleri
+├── lib/             # Utility fonksiyonlar ve i18n
+└── public/          # Statik dosyalar
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🌐 Dağıtım
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Website: [www.patientia.com.tr](https://www.patientia.com.tr)
 
-## Deploy on Vercel
+## 📝 Lisans
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+© 2025 Patientia. Tüm hakları saklıdır.

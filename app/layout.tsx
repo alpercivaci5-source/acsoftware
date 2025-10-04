@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { cookies } from "next/headers";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
@@ -24,25 +24,35 @@ const body = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://acsoftware.com"),
+  metadataBase: new URL("https://www.patientia.com.tr"),
   title: {
-    default: "AC Software — Dijital Çözümlerin Geleceği",
-    template: "%s | AC Software",
+    default: "Patientia — Dijital Çözümlerin Geleceği",
+    template: "%s | Patientia",
   },
   description:
-    "AC Software, vizyoner kurumlar için premium dijital ürünler, kurumsal platformlar ve zeki deneyimler tasarlayan bir teknoloji stüdyosudur.",
+    "Patientia is a professional software development company that leads digital transformation with custom web applications, mobile solutions, AI integrations, and cloud infrastructure.",
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/patientia-logo.png", sizes: "192x192", type: "image/png" },
+    ],
+    apple: [
+      { url: "/patientia-logo.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
+  manifest: "/manifest.json",
   alternates: {
     languages: {
-      en: "https://acsoftware.com/en",
-      tr: "https://acsoftware.com",
+      en: "https://www.patientia.com.tr/en",
+      tr: "https://www.patientia.com.tr",
     },
   },
   openGraph: {
-    title: "AC Software — Dijital Çözümlerin Geleceği",
+    title: "Patientia — Dijital Çözümlerin Geleceği",
     description:
-      "AC Software, vizyoner kurumlar için premium dijital ürünler, kurumsal platformlar ve zeki deneyimler tasarlayan bir teknoloji stüdyosudur.",
-    url: "https://acsoftware.com",
-    siteName: "AC Software",
+      "Patientia is a professional software development company that leads digital transformation with custom web applications, mobile solutions, AI integrations, and cloud infrastructure.",
+    url: "https://www.patientia.com.tr",
+    siteName: "Patientia",
     type: "website",
     locale: "tr_TR",
     alternateLocale: ["en_US"],
@@ -51,15 +61,15 @@ export const metadata: Metadata = {
         url: "/og-image.svg",
         width: 1200,
         height: 630,
-        alt: "AC Software — Dijital Çözümlerin Geleceği",
+        alt: "Patientia — Dijital Çözümlerin Geleceği",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "AC Software — Dijital Çözümlerin Geleceği",
+    title: "Patientia — Dijital Çözümlerin Geleceği",
     description:
-      "AC Software, vizyoner kurumlar için premium dijital ürünler, kurumsal platformlar ve zeki deneyimler tasarlayan bir teknoloji stüdyosudur.",
+      "Patientia is a professional software development company that leads digital transformation with custom web applications, mobile solutions, AI integrations, and cloud infrastructure.",
     images: ["/og-image.svg"],
   },
 };

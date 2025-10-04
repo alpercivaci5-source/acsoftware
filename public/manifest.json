@@ -1,0 +1,23 @@
+{
+  "name": "Patientia — Dijital Çözümlerin Geleceği",
+  "short_name": "Patientia",
+  "description": "Vizyoner kurumlar için premium dijital ürünler, kurumsal platformlar ve zeki deneyimler tasarlayan teknoloji stüdyosu",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0f",
+  "theme_color": "#D4AF37",
+  "icons": [
+    {
+      "src": "/patientia-logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/patientia-logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

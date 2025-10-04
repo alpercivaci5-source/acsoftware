@@ -1,0 +1,17 @@
+# İngilizce Çeviri Güncellemeleri
+
+## EN Translations to Fix:
+- Line 26: "hero.title": "Enterprise Digital Transformation & Software Development Partner"
+- Line 27: "hero.subtitle": "We empower your business with web applications, mobile solutions, AI integrations, and cloud-based systems."
+- Line 30: "hero.feature.enterprise": "Enterprise Software Development"
+- Line 31: "hero.feature.enterprise.desc": "Custom web and mobile applications, ERP integrations, and scalable systems for your business."
+- Line 32: "hero.feature.design": "User-Centric Design"
+- Line 33: "hero.feature.design.desc": "Modern, user-friendly interfaces and excellent UX to strengthen your brand digitally."
+- Line 34: "hero.feature.ai": "AI & Automation"
+- Line 35: "hero.feature.ai.desc": "Optimize your business processes with AI-powered automation solutions."
+- Line 36: "about.eyebrow": "About Patientia"
+- Line 37: "about.title": "Your Technology Partner for Digital Infrastructure"
+- Line 38: "about.description": "We provide enterprise software, web & mobile development, AI integration, and cloud solutions to lead your digital transformation."
+- Line 66: "services.eyebrow": "Our Services"
+- Line 67: "services.title": "Professional Software Solutions Tailored to Your Business"
+- Line 68: "services.description": "From websites to enterprise applications, mobile solutions to AI integrations - we cover all your digital needs."
