@@ -34,7 +34,7 @@ export function BackToTop() {
           exit={{ opacity: 0, scale: 0.8 }}
           transition={{ duration: 0.2 }}
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-50 flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-black/60 text-white shadow-lg backdrop-blur-xl transition hover:border-white/40 hover:bg-black/80 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white/50"
+          className="fixed bottom-6 right-4 z-50 flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-black/60 text-white shadow-lg backdrop-blur-xl transition hover:border-white/40 hover:bg-black/80 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white/50 sm:bottom-8 sm:right-8"
           aria-label={t("backToTop.label")}
           title={t("backToTop")}
         >

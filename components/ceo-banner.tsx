@@ -20,12 +20,14 @@ export function CeoBanner() {
         className="relative z-10 flex justify-center"
       >
         <motion.button
+          onClick={() => setIsExpanded(!isExpanded)}
           onMouseEnter={() => setIsExpanded(true)}
           onMouseLeave={() => setIsExpanded(false)}
-          className="group cursor-pointer"
+          className="group cursor-pointer touch-manipulation"
           whileHover={{ scale: 1.15 }}
           whileTap={{ scale: 0.9 }}
           aria-label="Expand banner"
+          aria-expanded={isExpanded}
         >
           <motion.div
             animate={{ y: [0, 6, 0] }}

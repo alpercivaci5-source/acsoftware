@@ -105,7 +105,7 @@ export function ServicesSection() {
                       initial={{ opacity: 0, y: 12 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.35, ease: "easeOut" }}
-                      className="relative max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-3xl border border-white/15 bg-gradient-to-br from-white/15 via-black/80 to-black/95 p-10 text-white shadow-2xl"
+                      className="relative max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-3xl border border-white/15 bg-gradient-to-br from-white/15 via-black/80 to-black/95 p-6 text-white shadow-2xl sm:p-10"
                     >
                       <Dialog.Close className="absolute right-4 top-4 rounded-full border border-white/20 bg-black/50 px-3 py-1 text-xs uppercase tracking-[0.3em] text-white/70 transition hover:bg-black/70">
                         {t("common.close")}

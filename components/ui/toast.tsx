@@ -67,7 +67,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
   return (
     <ToastContext.Provider value={{ showToast }}>
       {children}
-      <div className="fixed bottom-8 left-1/2 z-[100] flex -translate-x-1/2 flex-col gap-3">
+      <div className="fixed bottom-20 left-1/2 z-[100] flex -translate-x-1/2 flex-col gap-3 px-4 sm:bottom-8 sm:px-0">
         <AnimatePresence mode="popLayout">
           {toasts.map((toast) => (
             <motion.div
@@ -76,7 +76,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, x: 100, scale: 0.8 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
-              className={`flex items-center gap-3 rounded-2xl border px-6 py-4 shadow-2xl backdrop-blur-xl ${getColorClasses(toast.type)}`}
+              className={`flex w-full max-w-md items-center gap-3 rounded-2xl border px-4 py-3 shadow-2xl backdrop-blur-xl sm:px-6 sm:py-4 ${getColorClasses(toast.type)}`}
             >
               {getIcon(toast.type)}
               <p className="text-sm font-medium">{toast.message}</p>

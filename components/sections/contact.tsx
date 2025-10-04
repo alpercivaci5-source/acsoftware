@@ -37,7 +37,7 @@ export function ContactSection() {
           title={t("contact.title")}
           description={t("contact.description")}
         />
-        <div className="grid gap-10 rounded-3xl border border-white/10 bg-white/[0.05] p-10 backdrop-blur-xl lg:grid-cols-[1.1fr_0.9fr]">
+        <div className="grid gap-10 rounded-3xl border border-white/10 bg-white/[0.05] p-6 backdrop-blur-xl sm:p-10 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="space-y-10">
             <div className="space-y-4">
               <h3 className="font-heading text-2xl text-white">{t("contact.commitment.title")}</h3>

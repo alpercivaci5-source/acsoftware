@@ -107,7 +107,7 @@ export function PortfolioSection() {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.96 }}
                     transition={{ duration: 0.3, ease: "easeOut" }}
-                    className="relative max-h-[90vh] w-full max-w-3xl overflow-hidden rounded-3xl border border-white/15 bg-gradient-to-br from-white/10 via-black/85 to-black/95 p-10 text-white shadow-2xl"
+                    className="relative max-h-[90vh] w-full max-w-3xl overflow-hidden rounded-3xl border border-white/15 bg-gradient-to-br from-white/10 via-black/85 to-black/95 p-6 text-white shadow-2xl sm:p-10"
                   >
                     <Dialog.Close className="absolute right-4 top-4 rounded-full border border-white/20 bg-black/60 px-3 py-1 text-xs uppercase tracking-[0.3em] text-white/70 transition hover:bg-black/80">
                       {t("common.close")}

@@ -191,7 +191,7 @@ export function SiteNavigation() {
         <Dialog.Root open={mobileOpen} onOpenChange={setMobileOpen}>
           <Dialog.Trigger
             className={cn(
-              "inline-flex items-center justify-center rounded-full border border-white/15 p-2 text-white transition hover:border-white/30 hover:bg-white/10 md:hidden",
+              "inline-flex touch-manipulation items-center justify-center rounded-full border border-white/15 p-2 text-white transition hover:border-white/30 hover:bg-white/10 md:hidden",
               mobileOpen && "invisible",
             )}
           >
