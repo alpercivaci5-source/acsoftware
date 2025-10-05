@@ -1,8 +1,10 @@
 "use server";
 
-import { cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
 import { z } from "zod";
 import { resolveLanguage, t as translate, type Language } from "@/lib/i18n/config";
+import { rateLimit, getRateLimitIdentifier } from "@/lib/security/rate-limit";
+import { sanitizeContactData } from "@/lib/security/sanitize";
 
 export type ContactFormState = {
   status: "idle" | "success" | "error";
@@ -28,18 +30,25 @@ type ContactPayload = {
 };
 
 async function sendContactNotification({ name, email, message, lang }: ContactPayload) {
-  const {
-    CONTACT_RECIPIENT = "alpercivaci5@gmail.com",
-    FORMSUBMIT_ENDPOINT = "https://formsubmit.co/ajax",
-    FORMSUBMIT_REFERER,
-  } = process.env;
+  // Security: Get environment variables without defaults
+  const CONTACT_RECIPIENT = process.env.CONTACT_RECIPIENT;
+  const FORMSUBMIT_ENDPOINT = process.env.FORMSUBMIT_ENDPOINT;
+  const FORMSUBMIT_REFERER = process.env.FORMSUBMIT_REFERER;
+
+  // Security: Validate required environment variables
+  if (!CONTACT_RECIPIENT || !FORMSUBMIT_ENDPOINT) {
+    console.error("[SECURITY] Missing required environment variables");
+    throw new Error("configuration-error");
+  }
+
+  // Security: Validate email format
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(CONTACT_RECIPIENT)) {
+    console.error("[SECURITY] Invalid recipient email configuration");
+    throw new Error("configuration-error");
+  }
 
   const normalizedEndpoint = FORMSUBMIT_ENDPOINT.replace(/\/$/, "");
-
-  if (!CONTACT_RECIPIENT) {
-    console.error("Contact submission failed: missing Formsubmit recipient email.");
-    throw new Error("missing-email-config");
-  }
 
   const subject = `${translate(lang, "contact.page.eyebrow")} | ${name}`;
 
@@ -72,31 +81,77 @@ async function sendContactNotification({ name, email, message, lang }: ContactPa
   }
 
   if (!response.ok) {
-    console.error("Formsubmit API error", response.status, responseBody);
+    // Security: Don't log sensitive response data
+    console.error("[SECURITY] Email delivery failed", response.status);
     throw new Error("email-delivery-failed");
   }
 
-  console.info("Formsubmit API success", responseBody);
+  // Security: Log success without exposing data
+  console.info("[SECURITY] Email sent successfully");
 }
 
 export async function submitContactForm(
   prevState: ContactFormState,
   formData: FormData,
 ): Promise<ContactFormState> {
-  const raw = {
-    name: formData.get("name"),
-    email: formData.get("email"),
-    message: formData.get("message"),
-  };
-
   const cookieStore = await cookies();
   const lang = resolveLanguage(cookieStore.get("lang")?.value);
-  const contactSchema = createContactSchema(lang);
 
   try {
-    const data = contactSchema.parse(raw);
+    // Security: Get client IP for rate limiting
+    const headersList = await headers();
+    const forwardedFor = headersList.get("x-forwarded-for");
+    const realIp = headersList.get("x-real-ip");
+    const clientIp = forwardedFor?.split(",")[0] || realIp || "unknown";
 
-    console.info("📨 Contact submission", data);
+    // Security: Extract and validate raw data
+    const rawName = formData.get("name");
+    const rawEmail = formData.get("email");
+    const rawMessage = formData.get("message");
+
+    // Security: Check if values exist and are strings
+    if (
+      typeof rawName !== "string" ||
+      typeof rawEmail !== "string" ||
+      typeof rawMessage !== "string"
+    ) {
+      return {
+        status: "error",
+        message: translate(lang, "contact.form.error"),
+      };
+    }
+
+    // Security: Sanitize input data
+    const sanitized = sanitizeContactData({
+      name: rawName,
+      email: rawEmail,
+      message: rawMessage,
+    });
+
+    // Security: Validate with Zod
+    const contactSchema = createContactSchema(lang);
+    const data = contactSchema.parse(sanitized);
+
+    // Security: Rate limiting - 5 submissions per hour per IP+email combination
+    const rateLimitId = getRateLimitIdentifier(clientIp, data.email);
+    const rateLimitResult = rateLimit(rateLimitId, 5, 60 * 60 * 1000);
+
+    if (!rateLimitResult.success) {
+      console.warn("[SECURITY] Rate limit exceeded", { ip: clientIp });
+      return {
+        status: "error",
+        message: translate(lang, "contact.form.rateLimit"),
+      };
+    }
+
+    // Security: Log submission without sensitive data
+    console.info("[SECURITY] Contact form submitted", {
+      ip: clientIp,
+      hasEmail: !!data.email,
+      remaining: rateLimitResult.remaining,
+    });
+
+    // Send notification
     await sendContactNotification({ ...data, lang });
 
     return {
@@ -113,7 +168,11 @@ export async function submitContactForm(
       };
     }
 
-    console.error("Contact form submission failed", error);
+    // Security: Generic error message, don't expose details
+    console.error("[SECURITY] Contact form error", {
+      error: error instanceof Error ? error.message : "unknown",
+    });
+    
     return {
       status: "error",
       message: translate(lang, "contact.form.unexpected"),

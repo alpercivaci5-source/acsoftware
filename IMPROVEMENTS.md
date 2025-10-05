@@ -89,10 +89,19 @@ Bu dokümanda Patientia web sitesine eklenen tüm iyileştirmeler detaylı olara
   - Frame-ancestors engelleme
   - Upgrade-insecure-requests
 
+#### Contact Form Güvenliği (`/app/actions.ts`)
+- Env değişkenleri için zorunlu validasyon (varsayılan yok)
+- Input sanitizasyonu (`sanitizeContactData`)
+- Rate limiting (IP + email bazlı, saatlik 5 istek) (`/lib/security/rate-limit.ts`)
+- X-Forwarded-For ile IP tespiti
+- Maskelenmiş logging (PII saklamaz)
+- Hata mesajlarında bilgi sızıntısını engelleme
+
 #### Environment Variables (`.env.example`)
 - Örnek konfigürasyon dosyası
 - Güvenli değişken yönetimi
 - Analytics ve Sentry için hazır
+- Form submit için zorunlu alanlar
 
 ---
 
