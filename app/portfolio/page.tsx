@@ -35,7 +35,7 @@ export default async function PortfolioPage() {
   return (
     <div className="space-y-20 pb-24 pt-28">
       <section className="px-6">
-        <div className="mx-auto flex w-full max-w-5xl flex-col gap-12 text-white">
+        <div className="mx-auto flex w-full max-w-7xl flex-col gap-12 text-white">
           <SectionHeader
             eyebrow={t("portfolio.page.eyebrow")}
             title={t("portfolio.page.title")}

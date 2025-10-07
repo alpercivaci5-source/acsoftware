@@ -25,7 +25,7 @@ export function HeroSection() {
     <section className="relative overflow-hidden px-6 py-28 sm:py-32">
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(95,111,255,0.35),transparent_55%)]" />
       <div className="absolute left-1/2 top-24 -z-10 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-[conic-gradient(from_180deg,rgba(95,111,255,0.15),rgba(46,231,198,0.08),transparent_65%)] blur-3xl" />
-      <div className="mx-auto flex w-full max-w-6xl flex-col items-center text-center">
+      <div className="mx-auto flex w-full max-w-7xl flex-col items-center text-center">
         <motion.span
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}

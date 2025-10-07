@@ -108,7 +108,7 @@ export function SiteNavigation() {
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.25, ease: "easeOut" }}
-                  className="grid w-[420px] gap-3 rounded-3xl border border-white/10 bg-black/75 p-6 text-left backdrop-blur-xl shadow-2xl"
+                  className="grid w-[520px] gap-3 rounded-3xl border border-white/10 bg-black/75 p-6 text-left backdrop-blur-xl shadow-2xl"
                 >
                   <div className="flex items-center justify-between">
                     <div>
@@ -119,7 +119,7 @@ export function SiteNavigation() {
                     </div>
                     <Link
                       href="/services"
-                      className="rounded-full border border-white/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-white/70 transition hover:border-white/30 hover:text-white"
+                      className="whitespace-nowrap rounded-full border border-white/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-white/70 transition hover:border-white/30 hover:text-white"
                     >
                       {t("nav.viewAll")}
                     </Link>

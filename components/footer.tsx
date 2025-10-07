@@ -17,7 +17,7 @@ export function SiteFooter() {
 
   return (
     <footer className="border-t border-white/5 bg-black/40 backdrop-blur-xl">
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-6 py-10 text-sm text-white/60 sm:flex-row sm:items-center sm:justify-between">
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-6 py-10 text-sm text-white/60 sm:flex-row sm:items-center sm:justify-between">
         <div className="space-y-3">
           <div className="flex items-center gap-3">
             <span className="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-white/10 to-white/5">

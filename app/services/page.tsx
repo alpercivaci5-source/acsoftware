@@ -44,7 +44,7 @@ export default async function ServicesPage() {
   return (
     <div className="space-y-24 pb-24 pt-28">
       <section className="px-6">
-        <div className="mx-auto flex w-full max-w-5xl flex-col gap-12 text-white">
+        <div className="mx-auto flex w-full max-w-7xl flex-col gap-12 text-white">
           <SectionHeader
             eyebrow={t("services.page.eyebrow")}
             title={t("services.page.title")}

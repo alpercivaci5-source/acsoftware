@@ -46,7 +46,7 @@ export function AboutSection() {
 
   return (
     <section id="about" className="px-6 py-24 sm:py-32">
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-20">
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-20">
         <SectionHeader
           eyebrow={t("about.eyebrow")}
           title={t("about.title")}

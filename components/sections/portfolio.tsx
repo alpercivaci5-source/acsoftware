@@ -67,7 +67,7 @@ export function PortfolioSection() {
 
   return (
     <section id="portfolio" className="px-6 py-24 sm:py-32">
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-16">
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-16">
         <SectionHeader
           eyebrow={t("portfolio.eyebrow")}
           title={t("portfolio.title")}
