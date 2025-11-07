@@ -10,12 +10,30 @@ export function BackToTop() {
   const { t } = useI18n();
 
   useEffect(() => {
+    let timeoutId: NodeJS.Timeout | null = null;
+    let rafId: number | null = null;
+
     const toggleVisibility = () => {
       setIsVisible(window.scrollY > 500);
     };
 
-    window.addEventListener("scroll", toggleVisibility);
-    return () => window.removeEventListener("scroll", toggleVisibility);
+    // Throttle scroll events using requestAnimationFrame
+    const handleScroll = () => {
+      if (rafId) return;
+      
+      rafId = requestAnimationFrame(() => {
+        toggleVisibility();
+        rafId = null;
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (rafId) cancelAnimationFrame(rafId);
+      if (timeoutId) clearTimeout(timeoutId);
+    };
   }, []);
 
   const scrollToTop = () => {

@@ -10,6 +10,7 @@ import { SkipToContent } from "@/components/skip-to-content";
 import { ToastProvider } from "@/components/ui/toast";
 import { StructuredData } from "@/components/structured-data";
 import { GoogleAnalytics } from "@/components/analytics";
+import { StarfieldBackground } from "@/components/starfield-background";
 import { cn } from "@/lib/utils";
 import { I18nProvider } from "@/lib/i18n/client";
 import { resolveLanguage, t as translate } from "@/lib/i18n/config";
@@ -127,6 +128,7 @@ export default async function RootLayout({
           body.variable,
         )}
       >
+        <StarfieldBackground />
         <I18nProvider initialLang={lang}>
           <ToastProvider>
             <SkipToContent />

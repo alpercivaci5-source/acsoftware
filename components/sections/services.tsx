@@ -83,7 +83,7 @@ export function ServicesSection() {
                     id={service.id}
                     initial={{ opacity: 0, y: 24 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-80px" }}
+                    viewport={{ once: true, margin: "-80px", amount: 0.2 }}
                     transition={{ delay: index * 0.1, duration: 0.6, ease: "easeOut" }}
                     className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] p-8 backdrop-blur-xl transition hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.07]"
                   >
@@ -99,13 +99,22 @@ export function ServicesSection() {
                   </motion.article>
                 </Dialog.Trigger>
                 <Dialog.Portal>
-                  <Dialog.Overlay className="fixed inset-0 z-50 bg-black/70 backdrop-blur" />
-                  <Dialog.Content className="fixed inset-0 z-50 flex items-center justify-center px-6 py-12">
+                  <Dialog.Overlay className="fixed inset-0 z-40 bg-black/70 backdrop-blur" />
+                  <Dialog.Content 
+                    style={{
+                      position: 'fixed',
+                      top: '50%',
+                      left: '50%',
+                      transform: 'translate(-50%, -50%)',
+                      zIndex: 50,
+                    }}
+                    className="max-h-[90vh] w-[calc(100%-3rem)] max-w-3xl overflow-y-auto rounded-3xl border border-white/15 bg-gradient-to-br from-white/15 via-black/80 to-black/95 p-6 text-white shadow-2xl sm:p-10"
+                  >
                     <motion.div
-                      initial={{ opacity: 0, y: 12 }}
-                      animate={{ opacity: 1, y: 0 }}
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.35, ease: "easeOut" }}
-                      className="relative max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-3xl border border-white/15 bg-gradient-to-br from-white/15 via-black/80 to-black/95 p-6 text-white shadow-2xl sm:p-10"
+                      className="relative"
                     >
                       <Dialog.Close className="absolute right-4 top-4 rounded-full border border-white/20 bg-black/50 px-3 py-1 text-xs uppercase tracking-[0.3em] text-white/70 transition hover:bg-black/70">
                         {t("common.close")}

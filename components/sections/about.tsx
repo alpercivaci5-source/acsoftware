@@ -61,7 +61,7 @@ export function AboutSection() {
                 key={milestone.year}
                 initial={{ opacity: 0, x: -16 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true, margin: "-100px", amount: 0.3 }}
                 transition={{ delay: index * 0.1, duration: 0.6, ease: "easeOut" }}
                 className="group relative rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl"
               >
@@ -75,7 +75,7 @@ export function AboutSection() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: "-100px", amount: 0.3 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
             className="space-y-10 rounded-3xl border border-white/10 bg-gradient-to-br from-white/10 via-white/5 to-transparent p-10 backdrop-blur-xl"
           >

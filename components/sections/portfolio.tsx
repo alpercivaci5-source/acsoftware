@@ -82,7 +82,7 @@ export function PortfolioSection() {
                   type="button"
                   initial={{ opacity: 0, y: 24 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-80px" }}
+                  viewport={{ once: true, margin: "-80px", amount: 0.2 }}
                   transition={{ delay: index * 0.1, duration: 0.6, ease: "easeOut" }}
                   className="group h-full rounded-3xl border border-white/10 bg-white/[0.04] p-6 text-left backdrop-blur-xl transition hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.08]"
                 >
@@ -100,19 +100,28 @@ export function PortfolioSection() {
                 </motion.button>
               </Dialog.Trigger>
               <Dialog.Portal>
-                <Dialog.Overlay className="fixed inset-0 z-50 bg-black/70 backdrop-blur" />
-                <Dialog.Content className="fixed inset-0 z-50 flex items-center justify-center p-4">
+                <Dialog.Overlay className="fixed inset-0 z-40 bg-black/70 backdrop-blur" />
+                <Dialog.Content 
+                  style={{
+                    position: 'fixed',
+                    top: '50%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    zIndex: 50,
+                  }}
+                  className="max-h-[90vh] w-[calc(100%-2rem)] max-w-3xl overflow-y-auto rounded-3xl border border-white/15 bg-gradient-to-br from-white/10 via-black/85 to-black/95 p-6 text-white shadow-2xl sm:p-10"
+                >
                   <motion.div
                     initial={{ opacity: 0, scale: 0.96 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.96 }}
                     transition={{ duration: 0.3, ease: "easeOut" }}
-                    className="relative max-h-[90vh] w-full max-w-3xl overflow-hidden rounded-3xl border border-white/15 bg-gradient-to-br from-white/10 via-black/85 to-black/95 p-6 text-white shadow-2xl sm:p-10"
+                    className="relative"
                   >
                     <Dialog.Close className="absolute right-4 top-4 rounded-full border border-white/20 bg-black/60 px-3 py-1 text-xs uppercase tracking-[0.3em] text-white/70 transition hover:bg-black/80">
                       {t("common.close")}
                     </Dialog.Close>
-                    <div className="space-y-8 overflow-y-auto pr-2">
+                    <div className="space-y-8">
                       <div className="space-y-3">
                         <p className="text-xs uppercase tracking-[0.28em] text-white/40">{t(project.taglineKey)}</p>
                         <Dialog.Title className="font-heading text-3xl">{t(project.titleKey)}</Dialog.Title>
