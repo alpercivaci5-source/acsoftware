@@ -10,7 +10,6 @@ export function BackToTop() {
   const { t } = useI18n();
 
   useEffect(() => {
-    let timeoutId: NodeJS.Timeout | null = null;
     let rafId: number | null = null;
 
     const toggleVisibility = () => {
@@ -32,7 +31,6 @@ export function BackToTop() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
       if (rafId) cancelAnimationFrame(rafId);
-      if (timeoutId) clearTimeout(timeoutId);
     };
   }, []);
 

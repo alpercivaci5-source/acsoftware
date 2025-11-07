@@ -3,6 +3,17 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 
+interface ShootingStarPhysics {
+  velocity: { x: number; y: number };
+  acceleration: { x: number; y: number };
+  lifetime: number;
+  maxLifetime: number;
+  trailSegments: number;
+  angle: number;
+}
+
+type ShootingStarPoints = THREE.Points & ShootingStarPhysics;
+
 export function StarfieldBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const sceneRef = useRef<THREE.Scene | null>(null);
@@ -240,15 +251,16 @@ export function StarfieldBackground() {
       const velocityY = -Math.sin(angle) * speed;
       const gravity = 0.05; // Subtle gravitational acceleration
       
-      (shootingStar as any).velocity = { x: velocityX, y: velocityY };
-      (shootingStar as any).acceleration = { x: 0, y: -gravity };
-      (shootingStar as any).lifetime = 0;
-      (shootingStar as any).maxLifetime = 1.8 + Math.random() * 0.8;
-      (shootingStar as any).trailSegments = trailSegments;
-      (shootingStar as any).angle = angle;
+      const starWithPhysics = shootingStar as unknown as ShootingStarPoints;
+      starWithPhysics.velocity = { x: velocityX, y: velocityY };
+      starWithPhysics.acceleration = { x: 0, y: -gravity };
+      starWithPhysics.lifetime = 0;
+      starWithPhysics.maxLifetime = 1.8 + Math.random() * 0.8;
+      starWithPhysics.trailSegments = trailSegments;
+      starWithPhysics.angle = angle;
 
       scene.add(shootingStar);
-      shootingStarsRef.current.push(shootingStar as any);
+      shootingStarsRef.current.push(starWithPhysics);
     };
 
     createStars();
@@ -274,11 +286,12 @@ export function StarfieldBackground() {
 
       // Update shooting stars with physics
       shootingStarsRef.current = shootingStarsRef.current.filter((star) => {
-        const velocity = (star as any).velocity;
-        const acceleration = (star as any).acceleration;
-        const lifetime = (star as any).lifetime;
-        const maxLifetime = (star as any).maxLifetime;
-        const trailSegments = (star as any).trailSegments;
+        const starWithPhysics = star as ShootingStarPoints;
+        const velocity = starWithPhysics.velocity;
+        const acceleration = starWithPhysics.acceleration;
+        const lifetime = starWithPhysics.lifetime;
+        const maxLifetime = starWithPhysics.maxLifetime;
+        const trailSegments = starWithPhysics.trailSegments;
 
         // Apply physics
         velocity.x += acceleration.x;
@@ -299,7 +312,7 @@ export function StarfieldBackground() {
         star.geometry.attributes.position.needsUpdate = true;
 
         // Update lifetime
-        (star as any).lifetime += 0.016;
+        starWithPhysics.lifetime += 0.016;
 
         // Fade out with smooth easing
         const material = star.material as THREE.ShaderMaterial;

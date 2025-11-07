@@ -72,14 +72,6 @@ async function sendContactNotification({ name, email, message, lang }: ContactPa
     },
   );
 
-  let responseBody: unknown = null;
-  const rawBody = await response.text();
-  try {
-    responseBody = rawBody ? JSON.parse(rawBody) : null;
-  } catch {
-    responseBody = rawBody;
-  }
-
   if (!response.ok) {
     // Security: Don't log sensitive response data
     console.error("[SECURITY] Email delivery failed", response.status);
